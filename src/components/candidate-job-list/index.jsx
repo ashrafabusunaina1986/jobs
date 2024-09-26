@@ -53,7 +53,7 @@ function CandidateJobList({user, job, profileInfo, jobApplicants }) {
             <div className='flex flex-wrap gap-5 border-2 rounded-lg border-gray-400 px-3 py-4 lg:border-none text-xs lg:text-xl font-medium text-gray-700'>
               Skills{' '}
               {
-                job?.skills.split(',').map((skill,ind) => <h3 key={ind} className=' inline-flex w-max px-3 py-1 rounded-md bg-black text-white mx-2'>{skill}</h3>)
+                job?.skills?.split(',').map((skill,ind) => <h3 key={ind} className=' inline-flex w-max px-3 py-1 rounded-md bg-black text-white mx-2'>{skill}</h3>)
               }
             </div>
             <div className='flex gap-6'>
