@@ -1,6 +1,6 @@
 "use client";
 import { createTAction, fetchMessageAction, fetchTAction } from "@/actions";
-import { MessageCircle, MessageSquare } from "lucide-react";
+import { Info, MessageCircle, MessageSquare, Notebook } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -45,9 +45,12 @@ function T({ user }) {
         onMouseOver={() => sh(true)}
         className="flex items-center gap-2 px-2 py-1 bg-red-100 rounded-full hover:bg-red-200 w-max"
       >
+        <Info />
         <span className=" text-xs text-gray-900 font-bold">Updates</span>
         {l > 0 && (
-          <span className="text-xs font-bold bg-blue-600 text-gray-900 rounded-full px-3 py-1 ">{l + " new"}</span>
+          <span className="text-xs font-bold bg-yellow-800 text-gray-900 rounded-full px-3 py-1 ">
+            {l + " new"}
+          </span>
         )}
       </Link>
     </div>
