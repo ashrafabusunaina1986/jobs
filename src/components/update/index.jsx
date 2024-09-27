@@ -26,16 +26,16 @@ function Update({ m }) {
     }
     return s;
   };
-  console.log(
-    h().length,
-    h().length - num ,
-    num,
-    h().slice(num, num + 1)[0].length
-  );
+  // console.log(
+  //   h().length,
+  //   h().length - num ,
+  //   num,
+  //   h().slice(num, num + 1)[0].length
+  // );
   useEffect(() => {}, []);
   return (
     <div className="flex flex-col gap-5 items-baseline px-8 py-5 mt-10 mb-10 border-2 border-purple-200 rounded-lg">
-      {h().slice(num, num + 1)[0] && h().slice(num, num + 1)[0].length > 0
+      {m && m.length > 0
         ? h()
             .slice(num, num + 1)[0]
             .map((mm, i) => (
@@ -65,23 +65,25 @@ function Update({ m }) {
           </div>
         ))}
       </div> */}
-      <div className="w-max mx-auto flex items-center gap-2">
-        <span className="text-xs text-gray-200">
-          1-{sum(num + 1)} of {m?.length}
-        </span>
-        <ChevronLeft
-          onClick={() =>
-            num > 0
-              ? num >= h().length - 1 - num && setNum((prev) => prev - 1)
-              : setNum((prev) => prev)
-          }
-          className="cursor-pointer"
-        />
-        <ChevronRight
-          onClick={() => num < h().length - 1 && setNum((prev) => prev + 1)}
-          className="cursor-pointer"
-        />
-      </div>
+      {m && m.length > 0 && (
+        <div className="w-max mx-auto flex items-center gap-2">
+          <span className="text-xs text-gray-200">
+            1-{sum(num + 1)} of {m?.length}
+          </span>
+          <ChevronLeft
+            onClick={() =>
+              num > 0
+                ? num >= h().length - 1 - num && setNum((prev) => prev - 1)
+                : setNum((prev) => prev)
+            }
+            className="cursor-pointer"
+          />
+          <ChevronRight
+            onClick={() => num < h().length - 1 && setNum((prev) => prev + 1)}
+            className="cursor-pointer"
+          />
+        </div>
+      )}
     </div>
   );
 }
