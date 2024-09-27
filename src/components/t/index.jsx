@@ -16,8 +16,8 @@ function T({ user }) {
       // console.log(message, t);
       sm(message);
       let c = 0;
-      t.map((tt, i) => (c = c + Number(tt.time)));
-      sl(message?.length - c);
+      message.map((tt, i) => (c = c + (!tt.t ? 1 : 0)));
+      sl(c);
     };
     fetchMessaage();
   }, [user]);

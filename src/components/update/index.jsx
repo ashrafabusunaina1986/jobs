@@ -1,5 +1,6 @@
 "use client";
 import { updateMessageAction } from "@/actions";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -18,11 +19,18 @@ function Update({ m }) {
     }
     return arr.filter((item) => item?.length !== 0);
   };
-
+  const sum = (f) => {
+    let s = 0;
+    for (let i = 0; i < f; i++) {
+      s += h().slice(i, i + 1)[0].length;
+    }
+    return s;
+  };
+  // console.log(h().length, num, h().slice(num, num + 1)[0].length);
   useEffect(() => {}, []);
   return (
     <div className="flex flex-col gap-5 items-baseline px-8 py-5 mt-10 mb-10 border-2 border-purple-200 rounded-lg">
-      {m && m.length > 0
+      {h().slice(num, num + 1)[0] && h().slice(num, num + 1)[0].length > 0
         ? h()
             .slice(num, num + 1)[0]
             .map((mm, i) => (
@@ -41,7 +49,7 @@ function Update({ m }) {
               </Link>
             ))
         : null}
-      <div className="w-max mx-auto flex items-center gap-2">
+      {/* <div className="w-max mx-auto flex items-center gap-2">
         {h().map((item, i) => (
           <div
             onClick={() => setNum(i)}
@@ -51,6 +59,23 @@ function Update({ m }) {
             {i + 1}
           </div>
         ))}
+      </div> */}
+      <div className="w-max mx-auto flex items-center gap-2">
+        <span className="text-xs text-gray-200">
+          1-{sum(num + 1)} of {m?.length}
+        </span>
+        <ChevronLeft
+          onClick={() =>
+            h().length > 1
+              ? num >= h().length - 1 && setNum((prev) => prev - 1)
+              : setNum((prev) => prev)
+          }
+          className="cursor-pointer"
+        />
+        <ChevronRight
+          onClick={() => num < h().length - 1 && setNum((prev) => prev + 1)}
+          className="cursor-pointer"
+        />
       </div>
     </div>
   );

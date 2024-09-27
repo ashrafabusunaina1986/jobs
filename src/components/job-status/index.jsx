@@ -2,7 +2,6 @@
 import React from "react";
 
 function JobStatus({ m }) {
-  console.log(m);
 
   return (
     <div className="bg-gray-100 flex flex-col items-baseline gap-4 px-14 py-10 m-5 rounded-lg shadow-md shadow-purple-200">
