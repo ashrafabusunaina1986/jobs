@@ -26,7 +26,12 @@ function Update({ m }) {
     }
     return s;
   };
-  // console.log(h().length, num, h().slice(num, num + 1)[0].length);
+  console.log(
+    h().length,
+    h().length - num ,
+    num,
+    h().slice(num, num + 1)[0].length
+  );
   useEffect(() => {}, []);
   return (
     <div className="flex flex-col gap-5 items-baseline px-8 py-5 mt-10 mb-10 border-2 border-purple-200 rounded-lg">
@@ -66,8 +71,8 @@ function Update({ m }) {
         </span>
         <ChevronLeft
           onClick={() =>
-            h().length > 1
-              ? num >= h().length - 1 && setNum((prev) => prev - 1)
+            num > 0
+              ? num >= h().length - 1 - num && setNum((prev) => prev - 1)
               : setNum((prev) => prev)
           }
           className="cursor-pointer"
